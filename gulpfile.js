@@ -21,7 +21,7 @@ const lazypipe      = require('lazypipe'); //для задачи в задаче
 
 // ============ компиляция sass ============
 gulp.task('sass', function() {
-    return gulp.src('app/sass/main.scss')  //находим наш файл стилей
+    return gulp.src('app/sass/style.scss')  //находим наш файл стилей
         .pipe(sourcemaps.init())      // создаем sourcemaps
         .pipe(sass().on('error', sass.logError))  // преобразуем Sass в CSS посредством gulp-sass
         .pipe(autoprefixer([                     // создаем префиксы
