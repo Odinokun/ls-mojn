@@ -67,7 +67,6 @@ gulp.task('watch', ['browser-sync', 'sass'], function() {
 
 
 
-
 // ============ очистка папки DIST перед боевой сборкой ============
 gulp.task('clean', function() {
     return del('dist'); // удаляем папку dist перед сборкой
@@ -75,6 +74,12 @@ gulp.task('clean', function() {
 
 // ============ сборка в DIST ============
 gulp.task('build', ['clean'], function () {
+    var buildFonts = gulp.src('app/fonts/**/*') // переносим шрифты в продакшен
+        .pipe(gulp.dest('dist/fonts'))
+
+    var buildImg = gulp.src('app/img/**/*') // переносим картинки в продакшен
+        .pipe(gulp.dest('dist/img'))
+
     return gulp.src('app/*.html')
         .pipe(useref())
         .pipe(gulpif('*.js', uglify())) //минифицируем js
